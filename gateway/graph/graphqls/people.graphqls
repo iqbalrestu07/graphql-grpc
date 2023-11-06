@@ -1,0 +1,44 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type People {
+  name: String
+  age: Int
+  phone: String
+  address: Address
+}
+
+type Address {
+  province: String
+  city: String
+}
+
+type Query {
+  peoples: [People!]!
+  people(name:String!): People
+}
+
+input NewAddress{
+  province: String
+  city: String
+}
+
+input NewPeople {
+  name: String
+  age: Int
+  phone: String
+  address: NewAddress
+}
+
+
+input Filter {
+  name: String
+  age: Int
+  phone: String
+  address: NewAddress
+}
+
+type Mutation {
+  createPeople(input: NewPeople!): People
+}
